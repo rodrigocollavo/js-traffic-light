@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<title></title>
+        <meta name="description" content="">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/traffic-light.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <header>
+            <b>JS - Traffic Light</b>
+        </header>
+
+        <p>Simple light<p>
+        <div id="traffic-lights">
+        </div>
+
+        <p>Blinking<p>
+        <div id="traffic-lights-blink">
+        </div>
+
+        <p>Sequence<p>
+        <div id="traffic-lights-seq">
+        </div>
+
+        <p>Turned off<p>
+        <div id="traffic-lights-off">
+        </div>
+
+        <p>Different sizes<p>
+        <div id="traffic-lights-size-1">
+        </div>
+        <div id="traffic-lights-size-2">
+        </div>
+        <div id="traffic-lights-size-3">
+        </div>
+        <div id="traffic-lights-size-4">
+        </div>
+        <script>
+            $('#traffic-lights').trafficlight();
+            
+            $('#traffic-lights-blink').trafficlight();
+            $('#traffic-lights-blink').trafficlight('blink');
+            
+            $('#traffic-lights-seq').trafficlight();
+            function startSequence() {
+                setTimeout(function() {
+                    $('#traffic-lights-seq').trafficlight('blink');
+                    $('#traffic-lights-seq').trafficlight('changeColor', '#ffff00');
+                    setTimeout(function() {
+                        $('#traffic-lights-seq').trafficlight('stopBlink');
+                        $('#traffic-lights-seq').trafficlight('changeColor', 'red');
+                        setTimeout(startSequence, 4000);
+                    }, 4000);
+                }, 4000);
+            }
+            startSequence();
+            
+            $('#traffic-lights-off').trafficlight();
+            $('#traffic-lights-off').trafficlight('turnOff');
+            
+            $('#traffic-lights-size-1').trafficlight({diameter: 7});
+            $('#traffic-lights-size-2').trafficlight({diameter: 15, startColor: '#132456'});
+            $('#traffic-lights-size-3').trafficlight({diameter: 22, startColor: '#654321'});
+            $('#traffic-lights-size-4').trafficlight({diameter: 30, startColor: '#00FFFF'});
+        </script>
+    </body>
+</html>
+
+
