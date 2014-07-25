@@ -7,6 +7,8 @@ Easy light indicator, useful for server status
 indicator, or color tagging that can change the color
 for some specific events.
 
+http://rodrigocollavo.github.io/js-traffic-light/
+
 Use
 ---
 
